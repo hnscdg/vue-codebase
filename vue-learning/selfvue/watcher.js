@@ -2,10 +2,10 @@ function Watcher(vm, exp, cb) {
     this.cb = cb;
     this.exp = exp;
     this.vm = vm;
-    this.value = this.get;
+    this.value = this.get();
 }
 
-Watcher.property = {
+Watcher.prototype = {
     update: function () { this.run(); },
     run: function () {
         var value = this.vm.data[this.exp];

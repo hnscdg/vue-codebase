@@ -5,7 +5,6 @@
  * @param {*} val 
  * 属性以及子属性循环遍历的实现
  */
-
 function defineReactive(data, key, val) {
     observe(val); // recursion all the property
     var dep = new Dep();
@@ -21,7 +20,7 @@ function defineReactive(data, key, val) {
         set: function(newVal) {
             if(val == newVal) { return; } 
             val = newVal;
-            console.log(`property ${key} has been monitored and the new value is ${newVal.toString()}`);
+            console.log(`observer.js set the new value: ${newVal}`);
             dep.notify();
         }
     });
