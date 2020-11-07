@@ -19,7 +19,7 @@
     var selfVue = new SelfVue({name: 'hello world'}, ele, 'name');
 
     window.setTimeout(() => {
-        selfVue.data.name = "beebo"
+        selfVue.name = "beebo"
         console.log(`index.html change name to ${selfVue.data.name}`);
     }, 2000);
 </script>
