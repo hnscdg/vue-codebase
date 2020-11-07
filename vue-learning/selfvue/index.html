@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>VUE</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <script src="observer.js"></script>
+    <script src="watcher.js"></script>
+    <script src='main.js'></script>
+</head>
+<body>
+    <h1 id="name">{{name}}</h1>
+</body>
+
+<script type="text/javascript">
+    var ele = document.querySelector("#name");
+    var selfVue = new SelfVue({name: 'hello world'}, ele, 'name');
+
+    window.setTimeout(() => {
+        selfVue.data.name = "beebo"
+        console.log(`index.html change name to ${selfVue.data.name}`);
+    }, 2000);
+</script>
+</html>
