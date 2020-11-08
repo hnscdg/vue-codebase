@@ -1,42 +1,43 @@
-/**
- * 
- * @param {*} data
- * 循环遍历子属性 
- */
-function observe(data) {
-    if(!data || typeof data !== 'object') { return; }
+function Observer(data) {
+    this.data = data;
+    this.walk(data);
+}
 
-    Object.keys(data).forEach((key) => {
-        defineReactive(data, key, data[key]);
-    });
+Observer.prototype = {
+    walk: function(data) {
+        var self = this;
+        Object.keys(data).forEach(function(key) {
+            self.defineReactive(data, key, data[key]);
+        });
+    },
+    defineReactive: function(data, key, val) {
+        var dep = new Dep();
+        var childObj = observe(val);
+        Object.defineProperty(data, key, {
+            enumerable: true,
+            configurable: true,
+            get: function() {
+                if (Dep.target) {
+                    dep.addSub(Dep.target);
+                }
+                return val;
+            },
+            set: function(newVal) {
+                if (newVal === val) {
+                    return;
+                }
+                val = newVal;
+                dep.notify();
+            }
+        });
+    }
 };
 
-/**
- * @param {*} data 
- * @param {*} key 
- * @param {*} val 
- * 属性以及子属性循环遍历的实现
- */
-function defineReactive(data, key, val) {
-    observe(val); // recursion all the property
-    var dep = new Dep();
-    Object.defineProperty(data, key, {
-        enumerable: true,
-        configurable: true,
-        get: function() { 
-            if (Dep.target) {
-                dep.addSub(Dep.target);
-            }
-            return val; 
-        },
-        set: function(newVal) {
-            if(val == newVal) { return; } 
-            val = newVal;
-            console.log(`observer.js set the new value: ${newVal}`);
-            dep.notify();
-        }
-    });
-
+function observe(value, vm) {
+    if (!value || typeof value !== 'object') {
+        return;
+    }
+    return new Observer(value);
 };
 
 Dep.target = null;

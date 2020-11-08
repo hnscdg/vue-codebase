@@ -7,20 +7,37 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
     <script src="dep.js"></script>
+    <script src="compile.js"></script>
     <script src="observer.js"></script>
     <script src="watcher.js"></script>
     <script src="selfvue.js"></script>
 </head>
 <body>
-    <h1 id="name">{{name}}</h1>
+    <div id="app">
+        <h2>{{ title }}</h2>
+        <h1>{{ name }}</h1>
+    </div>
 </body>
 
 <script type="text/javascript">
-    var ele = document.querySelector("#name"); // get dom element
-    var selfVue = new SelfVue({name: 'hello world'}, ele, 'name'); // load selfvue
+
+    var selfVue = new SelfVue({
+        el: '#app',
+        data: {
+            title: 'hello world',
+            name: 'dgzhu'
+        }    
+    });
+    
+    // load selfvue
+
+    window.setTimeout(() => {
+        selfVue.title = "hi";
+    }, 1000);
+
     window.setTimeout(() => {
         selfVue.name = "beebo"; // set value of selfvue.data.name
-        console.log(`index.html change name to ${selfVue.name}`);
     }, 2000);
+
 </script>
 </html>
