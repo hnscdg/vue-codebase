@@ -8,6 +8,7 @@ function SelfVue(options) {
     var self = this;
     this.vm = this;
     this.data = options.data;
+    this.methods = options.methods;
 
     Object.keys(this.data).forEach((key) => {
         // bind property, get name value and set it
@@ -20,6 +21,7 @@ function SelfVue(options) {
     // modify to change the compile the dynamic dom
     new Compile(options.el, this.vm)
 
+    options.mounted.call(this); // 所有事情处理好后执行mounted函数
     // // this.data["name"] = 'hello world'
     // // set innerHTML vaule is "hello world"
     // // this command is used for compile dom value
@@ -32,7 +34,7 @@ function SelfVue(options) {
     //     el.innerHTML = value;
     // });
 
-    return this;
+    // return this;
 }
 
 // proxy set and get, make some improvement

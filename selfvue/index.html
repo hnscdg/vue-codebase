@@ -5,6 +5,11 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>VUE</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        #app {
+            text-align: center;
+        }
+    </style>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
     <script src="dep.js"></script>
     <script src="compile.js"></script>
@@ -14,8 +19,10 @@
 </head>
 <body>
     <div id="app">
-        <h2>{{ title }}</h2>
+        <h1>{{ title }}</h1>
+        <input v-model="name">
         <h1>{{ name }}</h1>
+        <button v-on:click="clickMe">clickMe!</button>
     </div>
 </body>
 
@@ -26,18 +33,29 @@
         data: {
             title: 'hello world',
             name: 'dgzhu'
-        }    
+        },
+        methods: {
+            clickMe: function() {
+                alert('hi');
+                this.title = 'hi dongguang';
+            }
+        },
+        mounted: function() {
+            window.setTimeout(() => {
+                this.title = 'hello beebo'
+            }, 2000);
+        }
     });
     
-    // load selfvue
+    // // load selfvue
 
-    window.setTimeout(() => {
-        selfVue.title = "hi";
-    }, 1000);
+    // window.setTimeout(() => {
+    //     selfVue.title = "hi";
+    // }, 1000);
 
-    window.setTimeout(() => {
-        selfVue.name = "beebo"; // set value of selfvue.data.name
-    }, 2000);
+    // window.setTimeout(() => {
+    //     selfVue.name = "beebo"; // set value of selfvue.data.name
+    // }, 2000);
 
 </script>
 </html>
