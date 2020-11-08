@@ -1,5 +1,17 @@
 /**
  * 
+ * @param {*} data
+ * 循环遍历子属性 
+ */
+function observe(data) {
+    if(!data || typeof data !== 'object') { return; }
+
+    Object.keys(data).forEach((key) => {
+        defineReactive(data, key, data[key]);
+    });
+};
+
+/**
  * @param {*} data 
  * @param {*} key 
  * @param {*} val 
@@ -28,44 +40,3 @@ function defineReactive(data, key, val) {
 };
 
 Dep.target = null;
-
-/**
- * 
- * @param {*} data
- * 循环遍历子属性 
- */
-function observe(data) {
-    if(!data || typeof data !== 'object') { return; }
-
-    Object.keys(data).forEach((key) => {
-        defineReactive(data, key, data[key]);
-    });
-};
-
-
-/**
- * 定义订阅器Dep
- */
-function Dep() {
-    this.subs = [];
-}
-
-Dep.prototype = {
-    addSub: function(sub) { this.subs.push(sub); },
-    notify: function() {
-        this.subs.forEach((sub) => { sub.update() });
-    }
-}
-
-
-// var libary = {
-//     book1: { a: 1},
-//     book2: ''
-// };
-// observe(libary);
-
-// libary.book1.name = 'vue book 1';
-// libary.book2 = 'vue book 2';
-
-// console.log(libary.book1.name);
-// console.log(libary.book2);

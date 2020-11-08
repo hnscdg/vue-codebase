@@ -6,6 +6,7 @@
     <title>VUE</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <script src="dep.js"></script>
     <script src="observer.js"></script>
     <script src="watcher.js"></script>
     <script src="selfvue.js"></script>
@@ -15,12 +16,11 @@
 </body>
 
 <script type="text/javascript">
-    var ele = document.querySelector("#name");
-    var selfVue = new SelfVue({name: 'hello world'}, ele, 'name');
-
+    var ele = document.querySelector("#name"); // get dom element
+    var selfVue = new SelfVue({name: 'hello world'}, ele, 'name'); // load selfvue
     window.setTimeout(() => {
-        selfVue.name = "beebo"
-        console.log(`index.html change name to ${selfVue.data.name}`);
+        selfVue.name = "beebo"; // set value of selfvue.data.name
+        console.log(`index.html change name to ${selfVue.name}`);
     }, 2000);
 </script>
 </html>

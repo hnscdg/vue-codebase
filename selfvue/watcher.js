@@ -2,6 +2,8 @@ function Watcher(vm, exp, cb) {
     this.cb = cb;
     this.exp = exp;
     this.vm = vm;
+    // get the new value of this.vm.data["name"] (beebo)
+    // add it to the Dep
     this.value = this.get();
 }
 
