@@ -32,6 +32,11 @@ Compile.prototype = {
         [].slice.call(childNodes).forEach(function(node) {
             var reg = /\{\{\s*(.*?)\s*\}\}/;
             var text = node.textContent;
+
+            if(self.isElementNode(node)) {
+                self.compile(node);
+            }
+
             if (self.isTextNode(node) && reg.test(text)) {  // 判断是否是符合这种形式{{}}的指令
                 self.compileText(node, reg.exec(text)[1]);
             }
@@ -41,6 +46,7 @@ Compile.prototype = {
             }
         });
     },
+
     compile: function(node) {
         var nodeAttrs = node.attributes;
         var self = this;
@@ -58,6 +64,8 @@ Compile.prototype = {
             }
         });
     },
+
+    // 对文本的处理
     compileText: function(node, exp) {
         var self = this;
         var initText = this.vm[exp];
@@ -66,14 +74,17 @@ Compile.prototype = {
             self.updateText(node, value);
         });
     },
+
+    // 对事件的处理
     compileEvent: function (node, vm, exp, dir) {
         var eventType = dir.split(':')[1];
         var cb = vm.methods && vm.methods[exp];
-
         if (eventType && cb) {
             node.addEventListener(eventType, cb.bind(vm), false);
         }
     },
+
+    // 对model的处理
     compileModel: function (node, vm, exp, dir) {
         var self = this;
         var val = this.vm[exp];
@@ -91,18 +102,31 @@ Compile.prototype = {
             val = newValue;
         });
     },
+
+    // 更新文本内容，UNdefined时定义为空，否者维持原有值
     updateText: function (node, value) {
         node.textContent = typeof value == 'undefined' ? '' : value;
     },
+
+    // 更新node中的value值
     modelUpdater: function(node, value, oldValue) {
         node.value = typeof value == 'undefined' ? '' : value;
     },
+
+    // 如果含有v-的指令，返回true，否者返回false
     isDirective: function(attr) {
         return attr.indexOf('v-') == 0;
     },
+
+    // 如果含有on：的事件指令，返回true,否者返回false
     isEventDirective: function(dir) {
         return dir.indexOf('on:') === 0;
     },
+
+    /**
+     * 
+     * @param {nodetype 1 表示元素，3表示文本节点} node 
+     */
     isElementNode: function (node) {
         return node.nodeType == 1;
     },
