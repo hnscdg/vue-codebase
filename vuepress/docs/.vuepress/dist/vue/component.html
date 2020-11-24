@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>组件介绍 | Hello, welcome!</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    
+    <meta name="description" content="just playing around">
+    
+    <link rel="preload" href="/assets/css/0.styles.992cb7aa.css" as="style"><link rel="preload" href="/assets/js/app.6e49d3a5.js" as="script"><link rel="preload" href="/assets/js/2.df9c7eb0.js" as="script"><link rel="preload" href="/assets/js/13.6886971f.js" as="script"><link rel="prefetch" href="/assets/js/10.010d73a7.js"><link rel="prefetch" href="/assets/js/11.1e3c2099.js"><link rel="prefetch" href="/assets/js/12.85b6206a.js"><link rel="prefetch" href="/assets/js/14.69740267.js"><link rel="prefetch" href="/assets/js/15.d419a6ea.js"><link rel="prefetch" href="/assets/js/3.6c8dd952.js"><link rel="prefetch" href="/assets/js/4.09fd2c39.js"><link rel="prefetch" href="/assets/js/5.fc791712.js"><link rel="prefetch" href="/assets/js/6.ffe6f60a.js"><link rel="prefetch" href="/assets/js/7.51c7a958.js"><link rel="prefetch" href="/assets/js/8.bc4eda93.js"><link rel="prefetch" href="/assets/js/9.9e50f491.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.992cb7aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Hello, welcome!</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="组件介绍"><a href="#组件介绍" class="header-anchor">#</a> 组件介绍</h2> <p>组件是可复用的Vue实例，且带有一个名字。它与<code>new Vue</code>接收相同的选项例如<code>data</code>,<code>computed</code>,<code>watch</code>,<code>methods</code>,以及生命周期钩子等。另外像<code>el</code>,这样的根实例才有该属性。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 定义一个名为 button-counter 的新组件</span>
+Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'button-counter'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">data</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      count<span class="token operator">:</span> <span class="token number">0</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  template<span class="token operator">:</span> <span class="token string">'&lt;button v-on:click=&quot;count++&quot;&gt;You clicked me {{ count }} times.&lt;/button&gt;'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>components-demo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button-counter</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button-counter</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h3 id="组件复用"><a href="#组件复用" class="header-anchor">#</a> 组件复用</h3> <p>组件可以任意次数的复用</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">&quot;components-demo&quot;</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>button<span class="token operator">-</span>counter<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">-</span>counter<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>button<span class="token operator">-</span>counter<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">-</span>counter<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>button<span class="token operator">-</span>counter<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">-</span>counter<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+</code></pre></div><p>点击按钮的时候，每个组件会独自维护自己的<code>count</code>。因为每次使用组件时，都会重新创建实例。</p> <h3 id="组件的命名规则"><a href="#组件的命名规则" class="header-anchor">#</a> 组件的命名规则</h3> <p>在注册组件时，我们始终需要给组件起一个名字。比如在全局注册的时候如下：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'my-component'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>该组件的名字就是<code>Vue.component</code>的第一个参数。组件名的写法有两种：</p> <ol><li><p>使用kebab-case</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'my-component-name'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>使用PascalCase</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'MyComponentName'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li></ol> <h3 id="data-必须是一个函数"><a href="#data-必须是一个函数" class="header-anchor">#</a> data 必须是一个函数</h3> <p>一个组件的<code>data</code>选项必须是<strong>一个函数</strong>，这样的目的组件被多次的引用时，数据是独立的不会相互影响。</p> <h3 id="组件的组织"><a href="#组件的组织" class="header-anchor">#</a> 组件的组织</h3> <p>通常一个应用会以一颗嵌套的组件树的形式来组织：</p> <p><img src="https://cn.vuejs.org/images/components.png" alt="Component Tree"></p> <p>为了能在模板中使用组件，这些组件必须首先注册以便Vue能识别。Vue组件的注册类型有两种：全局注册和局部注册。</p> <ul><li><p>全局注册组件的方法</p> <div class="language-hmtl extra-class"><pre class="language-text"><code>&lt;div id=&quot;example&quot;&gt;
+	&lt;my-component-name&gt;&lt;/my-component-name&gt;
+	/* 转换成以下格式 */
+	/* &lt;div&gt;A customer component!&lt;/div&gt;*/
+&lt;/div&gt;
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 注册</span>
+Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'my-component-name'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    template<span class="token operator">:</span> <span class="token string">'&lt;div&gt;A customer component!&lt;/div&gt;'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    el<span class="token operator">:</span> <span class="token string">'#example'</span><span class="token punctuation">,</span>
+    data<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// ... options ...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></li> <li><p>通过全局API来注册组件</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// definitation</span>
+<span class="token keyword">var</span> MyComponet <span class="token operator">=</span> Vue<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    template<span class="token operator">:</span> <span class="token string">'&lt;div&gt;A custome component!&lt;/div&gt;'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// register</span>
+Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'my-component'</span><span class="token punctuation">,</span> MyComponent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></li> <li><p>局部注册组件的方法</p></li></ul> <p>可通过某个Vue实例/组件的实例选项components注册局部组件，在这种情况下全局不可用</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> ChildA <span class="token operator">=</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">'&lt;div&gt; A child component!&lt;/div&gt;'</span> <span class="token punctuation">}</span>
+<span class="token keyword">var</span> ChildB <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span>
+<span class="token keyword">var</span> ChildC <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+    components<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 在这种情况下，&lt;my-component&gt;组件只能在父组件中可用</span>
+        <span class="token string">'child-a'</span><span class="token operator">:</span> ChildA<span class="token punctuation">,</span>
+        <span class="token string">'child-b'</span><span class="token operator">:</span> ChildB<span class="token punctuation">,</span>
+        <span class="token string">'child-c'</span><span class="token operator">:</span> ChildC
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>对于<code>components</code>对象中的每个property来说，其property名就是自定义的名字，其property值就是这个组件的选项对象。</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6e49d3a5.js" defer></script><script src="/assets/js/2.df9c7eb0.js" defer></script><script src="/assets/js/13.6886971f.js" defer></script>
+  </body>
+</html>
