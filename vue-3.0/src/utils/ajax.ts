@@ -19,9 +19,10 @@ export function ajax(config: Config) {
     xhr.send(config.data);
     xhr.onreadystatechange = () => {
         if(xhr.readyState == 4 && xhr.status == 200) {
-            console.log('successed');
+            // console.log('successed');
             if(config.dataType == 'json') {
-                console.log(JSON.parse(xhr.responseText))
+                console.log(xhr.responseText)
+                // console.log(JSON.parse(xhr.responseText))
             }else {
                 console.log(xhr.responseText)
             }

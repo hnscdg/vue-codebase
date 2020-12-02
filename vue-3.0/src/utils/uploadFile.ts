@@ -1,4 +1,4 @@
-const ajax = require('./ajax');
+import { ajax } from './ajax';
 const SIZE = 10 * 1024 * 1024; // 文件大小为10M
 const REQUEST_URL = 'http://localhost:3000/upload'; // 访问服务器地址3000
 
@@ -21,11 +21,12 @@ export const createChunkListWithHash = (file: any) => {
     ajax({
         type: 'POST',
         url: REQUEST_URL,
-        dataType: 'json'
+        dataType: 'json',
+        data: 'hello nodejs',
     });
     // 文件分片
     const fileChunkLists = createFileChunk(file);
-    console.log(fileChunkLists)
+    // console.log(fileChunkLists)
     return fileChunkLists.map(({ file }, index) => {
         return {
             chunk: file

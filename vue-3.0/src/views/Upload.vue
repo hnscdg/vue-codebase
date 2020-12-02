@@ -24,7 +24,7 @@ export default {
     };
     const bntButtonClick = (e) => {
       const temp = createChunkListWithHash(state.file);
-      console.log(temp);
+      // console.log(temp);
     };
     // DOM 首次加载之后，可以获取DOM元素的引用
     onMounted(() => {
