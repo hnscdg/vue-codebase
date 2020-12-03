@@ -17,16 +17,17 @@ export const createFileChunk = (file: any, size = SIZE) => {
 
 export const createChunkListWithHash = (file: any) => {
     const { name } = file;
-    console.log(file.size)
+    // 文件分片
+    const fileChunkLists = createFileChunk(file);
+    console.log(fileChunkLists.length)
+
     ajax({
         type: 'POST',
         url: REQUEST_URL,
         dataType: 'json',
-        data: 'hello nodejs',
+        data: fileChunkLists.toString(),
     });
-    // 文件分片
-    const fileChunkLists = createFileChunk(file);
-    // console.log(fileChunkLists)
+
     return fileChunkLists.map(({ file }, index) => {
         return {
             chunk: file
