@@ -20,9 +20,9 @@ export function ajax(config: Config) {
     xhr.onreadystatechange = () => {
         if(xhr.readyState == 4 && xhr.status == 200) {
             if(config.dataType == 'json') {
-                console.log(xhr.responseText)
+                // console.log(xhr.responseText)
             }else {
-                console.log(xhr.responseText)
+                // console.log(xhr.responseText)
             }
         }
     }
