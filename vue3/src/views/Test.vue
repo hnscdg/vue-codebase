@@ -26,6 +26,7 @@ export default {
 
     const { ctx } = getCurrentInstance();
     console.log(ctx.$router.currentRoute.value.path);
+    console.log(ctx);
     const a = computed(() => ctx.$store.state.test.a);
     const update = () => {
       ctx.$store.commit('setTestA', count);

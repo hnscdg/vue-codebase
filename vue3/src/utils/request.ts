@@ -1,4 +1,4 @@
-export const noop = function() {}
+// export const noop = function() {}
 
 
 export const request = ({
@@ -28,10 +28,10 @@ export const request = ({
             if(readyState === 4 && status === 200){
                 resolve(res.target);
             }
-            if(xhrLists.length){
-                const xhrIndex = xhrLists.findIndex(item => item === xhr);
-                xhrLists.splice(xhrIndex, 1)
-            }
+            // if(xhrLists.length){
+            //     const xhrIndex = xhrLists.findIndex(item => item === xhr);
+            //     xhrLists.splice(xhrIndex, 1)
+            // }
         }
         xhrLists.push(xhr);
     });

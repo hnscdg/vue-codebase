@@ -35,7 +35,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx", "src/utils/uploadFile.ts"
-  ],
+, "src/utils/worker/FileChunkWorker.js", "src/utils/worker/mainWorker.js"  ],
   "exclude": [
     "node_modules"
   ]
